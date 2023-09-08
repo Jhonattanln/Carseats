@@ -46,5 +46,12 @@ rstudent(model)
 confint(model, level=0.990)
 help("confint")
 
-#### Feature Select ####
-ajust <- 
+#### Feature Select Backward method ####
+ajust_aic <- step(model, direction='backward', k=2) # AIC Method
+
+k_BIC <- log(nrow(Carseats))
+ajust_bic <- step(model, direction='backward', k=k_BIC) # BIC Method
+
+#### Feature Selection Forward method ####
+
+
