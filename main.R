@@ -5,6 +5,10 @@ if (!require(ISLR)) {
   install.packages('ISLR')
   library(ISLR)
 }
+if (!require(ggResidpanel)) {
+  install.packages('ggResidpanel')
+  library(ggResidpanel)
+}
 library(ggplot2)
 #### Data ####
 data("Carseats") # Load dataset
@@ -22,4 +26,12 @@ ggplot(Carseats, aes(x=Price, y=Sales))+
   geom_point(size=2, col='blue')
 
 #### Linear Model ####
-  
+model <- lm(data=Carseats, Sales~.)
+summary(model)  
+
+resid_panel(model)
+resid_xpanel(model)
+
+#### Predict ####
+
+
