@@ -53,5 +53,7 @@ k_BIC <- log(nrow(Carseats))
 ajust_bic <- step(model, direction='backward', k=k_BIC) # BIC Method
 
 #### Feature Selection Forward method ####
+aj_null <- lm(Sales ~1, data=Carseats)
+ajust_for_aic <- step(aj_null, direction='forward', k=2, scope=formula(model)) # AIC Method
 
-
+ajuste_for_BIC <- step(aj_null, direction = 'forward', k = k_BIC, scope = formula(model))# BIC Method
