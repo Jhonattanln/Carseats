@@ -35,7 +35,7 @@ resid_xpanel(model)
 #### Predict ####
 new_data <- data.frame(CompPrice=125, Income=80, Advertising=0, Population=300, Price=125, ShelveLoc='Good', Age=60, Education=15,
                        Urban='No', US='Yes')
-prec <- predict(model, newdata=new_data)
+prec <- predict(model, newdata=new_data, interval='confidence', level=0.95)
 prec
 
 #### Residual analysis ####
@@ -57,3 +57,5 @@ aj_null <- lm(Sales ~1, data=Carseats)
 ajust_for_aic <- step(aj_null, direction='forward', k=2, scope=formula(model)) # AIC Method
 
 ajuste_for_BIC <- step(aj_null, direction = 'forward', k = k_BIC, scope = formula(model))# BIC Method
+
+#### Predict interval ####
